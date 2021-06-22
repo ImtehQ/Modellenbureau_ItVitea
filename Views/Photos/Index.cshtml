@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Modellenbureau.Models.Photo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    var imagePath = "";
+}
+    <h1>All Models</h1>
+
+    <table class="table">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @if (item.ImgUrl != "")
+                {
+                    @if (true) //If loged in idk how
+                    {
+                        <a asp-action="Details"
+                           asp-route-id="@item.Id">
+                            <img src="/Images/@item.ImgUrl"
+                                 alt=""
+                                 height="200"
+                                 width="200"
+                                 asp-append-version="true" />
+                        </a>
+                    }
+                    else //else only show pictures
+                    {
+                        <img src="/Images/@item.ImgUrl"
+                                 alt=""
+                                 height="200"
+                                 width="200"
+                                 asp-append-version="true" />
+                    }
+                }
+            }
+        </tbody>
+    </table>
